@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "sass -watch ./src/sass:./src/styles"
+    "watch": "sass --watch ./src/sass:./src/styles"
   },
   "keywords": [],
   "author": "Rodrigo Adnre Gutierrez",

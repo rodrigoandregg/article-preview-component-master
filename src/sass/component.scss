@@ -1,2 +1,183 @@
 @import "reset";
 @import "boxes";
+
+body {
+  background: $main-bg;
+  @include flexBox;
+  height: 100vh;
+  width: 100%;
+  font-size: 13px;
+}
+
+.card {
+  @include flexBox;
+  margin: 1rem;
+  max-width: 20rem;
+  background: $light;
+  border-radius: 0.5rem;
+
+  &__bg {
+    background: url(../images/drawers.jpg) no-repeat center;
+    background-size: cover;
+    height: 15rem;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 0.5rem 0.5rem 0 0;
+  }
+
+  &__info {
+    @include flexBox;
+    padding: 1.5rem 2rem;
+    gap: 1rem;
+  }
+
+  &__title {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: $primary;
+  }
+
+  &__user {
+    @include flexBox($fd: row, $jc: space-between);
+    padding: 0 1rem;
+    position: relative;
+  }
+
+  &__avatar {
+    @include flexBox;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 0 1rem 1rem;
+  }
+
+  &__photo {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 3rem;
+  }
+
+  &__info--avatar {
+    align-items: start;
+    gap: 0;
+    padding: 0.8rem 0;
+  }
+
+  &__title--avatar {
+    font-size: 1em;
+  }
+
+  &__btn {
+    @include flexBox;
+    background: $main-bg;
+    padding: 0.6rem;
+    border-radius: 50%;
+    z-index: 1;
+
+    &:focus {
+      background: $secondary;
+      color: $light;
+    }
+  }
+
+  &__btn:focus &__icon {
+    filter: brightness(100);
+  }
+
+  &__social {
+    @include flexBox($jc: start);
+    flex-direction: row;
+    position: absolute;
+    background: $primary;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    gap: 1rem;
+    padding: 0 1rem;
+    display: none;
+  }
+
+  &__title--social {
+    color: $secondary;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    font-weight: 500;
+    letter-spacing: 0.5rem;
+  }
+
+  &__link {
+    width: 1.5rem;
+
+    &:hover {
+      filter: brightness(0.8);
+    }
+  }
+}
+
+footer {
+  font-size: 0.8em;
+  padding-top: 2rem;
+
+  p a {
+    font-weight: 700;
+  }
+}
+
+[data-title]:hover:after {
+  opacity: 1;
+  transition: all 0.1s ease 0.5s;
+  visibility: visible;
+}
+[data-title]:after {
+  content: attr(data-title);
+  background-color: $primary;
+  color: $light;
+  font-size: 14px;
+  position: absolute;
+  padding: 3px 20px;
+  top: -2rem;
+  right: 1rem;
+  white-space: nowrap;
+  opacity: 0;
+  z-index: 99999;
+  visibility: hidden;
+  border-radius: 6px;
+}
+[data-title] {
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .card {
+    flex-direction: row;
+    max-width: 40rem;
+
+    &__bg {
+      height: 100%;
+      border-radius: 0.5rem 0 0 0.5rem;
+    }
+
+    &__social {
+      top: -2.5rem;
+      right: -4rem;
+      left: unset;
+      height: 2.5rem;
+      width: 12rem;
+      border-radius: 0.5rem;
+      font-size: 1em;
+
+      &::before {
+        content: "";
+        border-right: 1rem solid $primary;
+        border-bottom: 1rem solid $primary;
+        position: absolute;
+        transform: rotate(45deg);
+        top: 2rem;
+        left: 45%;
+      }
+    }
+    &__title--social {
+      letter-spacing: 0.2rem;
+    }
+  }
+}
